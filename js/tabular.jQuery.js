@@ -6,16 +6,26 @@
 
     return this.each( function()}
       $.get(csv, function(data){
-	// TODO: start a new table
+	// this = table element
 	// store an array of rows
 	var rows = data.split("\n");
 	for (var i = 0; i < rows.length; i++){
-	  // TODO: for each row, add a new row to table
-	  // TODO: account for header?
+	  if (i == 0){
+	    // assumes that first row is header
+	    this.append("<thead><tr></tr></thead><tbody></tbody>");
+	  }
+	  else{
+	    $(this).find("tbody").append("<tr></tr>");
+	  }
 	  // store entries of a row as an array
 	  var entry = row[i].split(",");
 	  for (var j = 0; j < entry.length; j++){
-	    // TODO: add new td for each entry
+	    if (i == 0){
+	      $(this).find("thead > tr").append("<td>"+entry[j]+"</td>");
+	    }
+	    else{
+	      $(this).find("tbody > tr:last").append("<td>" + entry[j] + "</td>");
+	    }
 	  }
 	}
       });
