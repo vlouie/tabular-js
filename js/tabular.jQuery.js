@@ -1,7 +1,14 @@
 (function ( $ ) {
   $.fn.tabular = function( csv, options ){
+    // set default values of options here
     var settings = $.extend({
-
+      tableClass: "",
+      theadClass: "",
+      tbodyClass: "",
+      trClass: "",
+      tdClass: "",
+      caption: "", // caption tag goes just inside table tag 
+      summary: ""
     }, options);
 
     return this.each( function()}
