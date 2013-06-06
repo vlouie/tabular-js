@@ -20,9 +20,7 @@ gnarly customization
 
 A variety of options are available to create a table that's unique and to your taste.
 You've just gotta know how to use 'em...
-<pre><code>
-        $("#basic").tabular('tables/table.csv');
-</code></pre>
+<pre><code>$("#basic").tabular('tables/table.csv');</code></pre>
 
 radical tables
 --------------
