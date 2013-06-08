@@ -4,17 +4,23 @@
     // set default values of options here
     var settings = $.extend({
       type: ",",
+      caption: "", // caption tag goes just inside table tag 
       tableClass: "",
       theadClass: "",
       tbodyClass: "",
       trClass: "",
       tdClass: "",
-      caption: "", // caption tag goes just inside table tag 
-      summary: ""
+      captionClass: "",
     }, options);
     
     return this.each( function(){
       var separator = (settings.type == "tab") "\t" : ",";
+      if (settings.caption.length != 0){
+        table.append("<caption>" + settings.caption + "</caption>");
+        if (settings.captionClass.length != 0){
+          table.find("caption").addClass(settings.captionClass);
+        }
+      }
       $.get(csv, function(data){
         // this = table element
         // store an array of rows
@@ -38,6 +44,12 @@
             }
           }
         }
+        table.addClass(settings.tableClass);
+        table.find("thead").addClass(settings.theadClass);
+        table.find("thead > tr").addClass(settings.trClass);
+        table.find("tbody").addClass(settings.tbodyClass);
+        table.find("thead > tr > td").addClass(settings.tdClass);
+        table.find("tbody > tr > td").addClass(settings.tdClass);
       });
     });
   }
