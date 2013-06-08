@@ -3,6 +3,7 @@
     var table = this;
     // set default values of options here
     var settings = $.extend({
+      type: ",",
       tableClass: "",
       theadClass: "",
       tbodyClass: "",
@@ -13,9 +14,10 @@
     }, options);
     
     return this.each( function(){
+      var separator = (settings.type == "tab") "\t" : ",";
       $.get(csv, function(data){
-	// this = table element
-	// store an array of rows
+        // this = table element
+        // store an array of rows
         var rows = data.split("\n");
         for (var i = 0; i < rows.length; i++){
           if (i == 0){
@@ -26,7 +28,7 @@
             table.find("tbody").append("<tr></tr>");
           }
           // store entries of a row as an array
-          var entry = rows[i].split(",");
+          var entry = rows[i].split(separator);
           for (var j = 0; j < entry.length; j++){
             if (i == 0){
               table.find("thead > tr").append("<td>"+entry[j]+"</td>");
