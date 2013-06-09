@@ -1,10 +1,20 @@
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css"> 
     <script src="jquery-1.10.0.min.js" type="text/javascript"></script>
-    <script src="tabular.jQuery.js" type="text/javascript"></script>
+    <script src="js/tabular.jQuery.js" type="text/javascript"></script>
     <script> 
       $(document).ready(function(){
         $("#basic").tabular('tables/table.csv');
+        $("#fancy").tabular('tables/table.csv',
+          {
+            caption: "A fancy table",
+            tableClass: "fancyTable",
+            theadClass: "fancyHead",
+            tbodyClass: "fancyBod",
+            tdClass: "fancyTD",
+            captionClass: "fancyCaption"
+          });
       });
     </script>
   </head>

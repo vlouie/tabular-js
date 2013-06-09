@@ -1,0 +1,20 @@
+.fancyTable{
+  font-family: Arial;
+  text-align: center;
+  width: 35%;
+}
+.fancyHead{
+  background-color: #1e90ff;
+  font-weight: bold;
+}
+.fancyBod{
+  background-color: #e0ffff;
+  font-size: 12px;
+}
+.fancyTD{
+  width: 25%;
+}
+.fancyCaption{
+  font-family: Verdana, Tahoma, serif;
+  font-size: 10px;
+}

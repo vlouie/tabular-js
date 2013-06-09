@@ -3,7 +3,7 @@
     var table = this;
     // set default values of options here
     var settings = $.extend({
-      type: ",",
+      type: ",", // default handling is csv
       caption: "", // caption tag goes just inside table tag 
       tableClass: "",
       theadClass: "",
@@ -14,7 +14,7 @@
     }, options);
     
     return this.each( function(){
-      var separator = (settings.type == "tab") "\t" : ",";
+      var separator = (settings.type == "tab") ? "\t" : ",";
       if (settings.caption.length != 0){
         table.append("<caption>" + settings.caption + "</caption>");
         if (settings.captionClass.length != 0){
@@ -25,7 +25,7 @@
         // this = table element
         // store an array of rows
         var rows = data.split("\n");
-        for (var i = 0; i < rows.length; i++){
+        for (var i = 0; i < rows.length-1; i++){
           if (i == 0){
             // assumes that first row is header
             table.append("<thead><tr></tr></thead><tbody></tbody>");
@@ -44,6 +44,7 @@
             }
           }
         }
+        // add classes to table as per options
         table.addClass(settings.tableClass);
         table.find("thead").addClass(settings.theadClass);
         table.find("thead > tr").addClass(settings.trClass);
